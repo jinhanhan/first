@@ -1,0 +1,23 @@
+server:
+  port: 7777
+spring:
+  datasource:
+        username: root
+        password: dcEd88888888
+        url: jdbc:mysql://121.42.11.227:3306/perfect-mathematics?serverTimezone=GMT%2B8
+  servlet:
+    multipart:
+      max-request-size: 10GB
+      max-file-size: 10GB
+mybatis:
+  type-aliases-package: com.daocheng.pojo
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true  #开启驼峰
+#ftp config
+logging:
+  level:
+    com:
+      education:
+        youge:
+          mapper: info

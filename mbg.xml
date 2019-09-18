@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<!--配置生成器-->
+<generatorConfiguration>
+    <!-- 一个数据库一个context -->
+    <!--defaultModelType="flat" 大数据字段，不分表 -->
+    <context id="LanShou" targetRuntime="MyBatis3" defaultModelType="flat">
+        <!-- 生成没有注释的mapper -->
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/><!-- 是否取消注释 -->
+            <property name="suppressDate" value="false" /> <!-- 是否生成注释代时间戳-->
+        </commentGenerator>
+
+        <!-- 配置数据库连接 -->
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://121.42.11.227:3306/perfect-mathematics"
+                        userId="root"
+                        password="dcEd88888888">
+        </jdbcConnection>
+        <!--类型转换-->
+        <javaTypeResolver>
+            <!--是否使用bigDecimal，false可自动转化一下类型(Long,Integer,Short,etc)-->
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+
+        <!-- 指定javaBean(实体类)生成的位置 -->
+        <javaModelGenerator targetPackage="com.daocheng.perfectmathematical.pojo"
+                            targetProject=".\src\main\java">
+            <property name="enableSubPackages" value="true" />
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+
+        <!--指定sql映射文件生成的位置 -->
+        <sqlMapGenerator targetPackage="mapper" targetProject=".\src\main\resources">
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+
+        <!-- 指定dao接口生成的位置，mapper接口 -->
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="com.daocheng.perfectmathematical.dao"
+                             targetProject=".\src\main\java">
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+
+
+        <!-- table指定每个表的生成策略 -->
+      <!--  <table tableName="t_learner_info" domainObjectName="TLeatnerInfo">
+            &lt;!&ndash; 数据库表主键 &ndash;&gt;
+            <generatedKey column="id" sqlStatement="Mysql" identity="true" />
+        </table>-->
+
+        <table tableName="sys_book" domainObjectName="Book"/>
+        <table tableName="sys_book_chapter" domainObjectName="BookChapter"/>
+        <table tableName="p_appointment" domainObjectName="Appointment"/>
+        <table tableName="sys_campus" domainObjectName="Campus"/>
+
+
+    </context>
+</generatorConfiguration>
